@@ -1,0 +1,31 @@
+.floating-buttons {
+    position: fixed;
+    right: 20px;
+    bottom: 20px;
+    display: flex;
+    flex-direction: column;
+}
+  
+.btn-circle {
+    width: 72px;
+    height: 72px;
+    padding: 0;
+    border-radius: 50%; 
+    display: inline-flex; 
+    justify-content: center;
+    align-items: center;
+    font-size: 36px; 
+}
+  
+
+.add-btn {
+    background-color: #007bff; 
+    color: white;
+    border: none;
+}
+
+.start-btn {
+    background-color: #28a745; 
+    color: white;
+    border: none;
+}
