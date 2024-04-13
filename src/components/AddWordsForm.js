@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { BiTrash, BiPlus, BiPlay } from 'react-icons/bi'; 
+import { BiTrash, BiPlus, BiArrowBack } from 'react-icons/bi'; 
 import '../assets/css/add-words-form.css';
 
 function AddWordsForm() {
   const navigate = useNavigate();
-  const [wordPairs, setWordPairs] = useState([{ polish: '', translation: '', id: Date.now(), error: false }]);
+  const [wordPairs, setWordPairs] = useState([]);
   const [submitAttempted, setSubmitAttempted] = useState(false);
 
   useEffect(() => {
@@ -31,26 +31,19 @@ function AddWordsForm() {
     localStorage.setItem('words', JSON.stringify(updatedWordPairs));
   };
 
-  const startTest = () => {
-    const updatedWordPairs = wordPairs.map(pair => ({
-      ...pair,
-      error: !pair.polish || !pair.translation
-    }));
-    setWordPairs(updatedWordPairs);
-    const incomplete = updatedWordPairs.some(pair => pair.error);
-
-    if (incomplete) {
-      setSubmitAttempted(true);
-      return;
-    }
-
-    navigate('/test', { state: { words: wordPairs.filter(pair => !pair.error) } });
+  const goToHomePage = () => {
+    navigate('/');
   };
 
   return (
     <div className="container mt-5 text-center">
-      <h1 className='mb-3'>Lista słówek</h1>
-      {wordPairs.map((pair, index) => (
+      <div className="back-button" style={{ position: 'absolute', left: '20px', top: '20px' }}>
+        <button onClick={goToHomePage} className="back-btn btn-circle">
+          <BiArrowBack />
+        </button>
+      </div>
+      <h1 className='m-3'>Słownik</h1>
+      {wordPairs.length > 0 ? wordPairs.map((pair, index) => (
         <div key={pair.id} className="row align-items-end mb-3">
           <div className="col">
             <input
@@ -76,13 +69,12 @@ function AddWordsForm() {
             </button>
           </div>
         </div>
-      ))}
+      )) : (
+        <p className="text-muted">Nie masz jeszcze żadnych słówek. Dodaj je, aby móc rozpocząć naukę!</p>
+      )}
       <div className="floating-buttons">
         <button onClick={addWordField} className="btn-circle add-btn mb-2">
           <BiPlus />
-        </button>
-        <button onClick={startTest} className="btn-circle start-btn ml-2 mb-2">
-          <BiPlay />
         </button>
       </div>
     </div>

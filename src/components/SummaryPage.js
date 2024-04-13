@@ -6,15 +6,14 @@ function SummaryPage() {
   const location = useLocation();
   const { correctAnswers, totalAttempts, successPercentage } = location.state || { correctAnswers: 0, totalAttempts: 0, successPercentage: 0 };
 
-  // Przekierowanie jeśli stan z nawigacji jest pusty lub niepełny
   useEffect(() => {
     if (!location.state || !correctAnswers || !totalAttempts) {
-      navigate('/add-words'); // Możesz zmienić to na '/login' lub inną stronę startową
+      navigate('/add-words'); 
     }
   }, [location.state, navigate, correctAnswers, totalAttempts]);
 
   const restartTest = () => {
-    navigate('/add-words');
+    navigate('/');
   };
 
   return (

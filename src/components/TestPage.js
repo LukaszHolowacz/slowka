@@ -68,9 +68,9 @@ function TestPage() {
           return (
             <button
               key={index}
-              className={`btn ${buttonClass} btn-lg m-2`} // Dodano btn-lg dla większych przycisków
+              className={`btn ${buttonClass} btn-lg m-2`} 
               onClick={() => handleAnswer(option, index)}
-              style={{ fontSize: '1.25rem' }} // Zwiększony rozmiar tekstu
+              style={{ fontSize: '1.25rem' }}
             >
               {option.translation}
             </button>

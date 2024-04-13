@@ -1,0 +1,33 @@
+.words-btn {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    font-size: 24px;
+    width: 56px; 
+    height: 56px; 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+}
+
+@media (max-width: 768px) {
+    .words-btn {
+        top: auto; 
+        bottom: 20px; 
+        right: 20px; 
+    }
+}
+
+.card {
+    border: none;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.3); 
+    transition: box-shadow 0.3s; 
+}
+
+.card:hover {
+    box-shadow: 0 8px 16px rgba(0,0,0,0.4); 
+}
+  
+
+  
